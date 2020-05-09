@@ -206,16 +206,173 @@
 // console.log(result);
 
 // operadores de comparação
-let age = 21;
+// let age = 21;
 // console.log(age == 21);
 // console.log(age == 30);
 // console.log(age != 30);
 // console.log(age > 20);
 // console.log(age <= 21);
 
+
+
+
+// Aula 16 - comparação estrita
+// let age = 21;
+
 // observação: == e ===, fazem algo bem parecido. A diferença entre eles, é que == vai comparar os valores sem observar o data type, já ===, vai levar o data type em consideração.
 
 // diferente de python, retornará true, já que os valores são iguais, mesmo que um seja int e o outro str.
-console.log(age == '21');
+// console.log(age == '21');
 // esse sim retornará falso, tendo o mesmo comportamento que python, pois aqui, JS está levando em consideração os tipos.
-console.log(age === '21');
+// console.log(age === '21');
+// console.log(age !== '21');
+
+
+
+
+// Aula 17 - conversão de tipo
+// let score = '100';
+
+// conversão de string para número
+// score = Number(score);
+// console.log(score + 1);
+// console.log(typeof score);
+
+// let result = String(50);
+// console.log(result, typeof result);
+
+
+
+
+// Aula 19 - for loop
+// for (let i = 0; i < 5; i+=2){
+//     console.log(i);
+// }
+
+// const names = ['shaun', 'mario', 'luigi'];
+
+// for (let i = 0; i < names.length; i++){
+//     console.log(names[i]);
+// }
+
+// não funciona tão bem quanto em python, mas dá pro gasto
+// for (name in names){
+//     console.log(names[name]);
+// }
+
+// let html = '';
+// let n = 1;
+// for (let i = 0; i < names.length; i++){
+//     html += `<h${n}>${names[i]}</h${n}>`;
+//     console.log(html);
+//     n++;
+// }
+
+// document.write(html);
+
+
+
+
+// Aula 20 - while loop
+// let i = 0;
+// while (i < 5){
+//     console.log(i);
+//     i++;
+// }
+
+// const names = ['luigi', 'shaun', 'mario'];
+
+// let i = 0;
+// let html = '';
+// let n = 1;
+// while (i < names.length){
+//     html += `<h${n}>${names[i]}</h${n}>`;
+//     let display = `<h${n}>${names[i]}</h${n}>`;
+//     console.log(display);
+//     i++;
+//     n++;
+// }
+
+// document.write(html);
+
+
+
+
+// Aula 21 - do while loop
+
+// dada as condições, o código dentro do loop nunca ser´´a executado, uma vez que o valor de i é 5.
+// let i = 5;
+// while (i < 5){
+//     console.log(`value of i: ${i}`);
+//     i++;
+// }
+// console.log('loop finished');
+
+// para que o código anterior dentro do loop seja executado pelo menos uma vez, usaremos DO WHILE LOOP. Nós dizemos o que queremos que aconteça primeiro e só então criamos a condição do loop. Dessa forma nós garantimos que o código será executado ao menos uma vez.
+// let i = 5;
+// do{
+//     console.log(`value of i: ${i}`);
+//     i++;
+// }
+// while (i < 5);
+
+
+
+
+// Aula 22 - if
+// const age = 39;
+
+// if (age > 20){
+//     console.log('You can buy bear');
+// }
+
+// const ninjas = ['shaun', 'ryu', 'chun-li', 'youshi'];
+
+// if (ninjas.length > 3){
+//     console.log("That's a lot of ninjas");
+// }
+
+// const password = 'passmethesalt';
+
+// if (password.length >= 8){
+//     console.log('That password is long enough');
+// }
+
+
+// Aula 23 - else & else if
+// const password = 'passmethesalt';
+
+// if (password.length >= 12){
+//     console.log('This password is really STRONG');
+// }
+// else if (password.length >= 8){
+//     console.log('That password is long enough');
+// }
+// else{
+//     console.log('Password not long enough');
+// }
+
+
+
+
+// Aula 24 - operadores lógicos (&& and; || or)
+// const password = 'p@ss';
+
+// if (password.length >= 12 || password.includes('@')){
+//     console.log('This password is really STRONG');
+// } else if (password.length >= 8){
+//     console.log('That password is long enough');
+// } else{
+//     console.log("That's not long enough");
+// }
+
+
+
+
+// Aula 25 - NOT (tornar true em false e false em true !)
+// if (!false){
+//     console.log('This makes this true');
+// }
+
+console.log(!true);
+console.log(!false);
