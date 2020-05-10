@@ -374,5 +374,100 @@
 //     console.log('This makes this true');
 // }
 
-console.log(!true);
-console.log(!false);
+// console.log(!true);
+// console.log(!false);
+
+
+
+
+// Aula 26 - Break & Continue
+// const scores = [50, 25, 0, 30, 100, 20, 10];
+
+// for (let i = 0; i < scores.length; i++){
+//     if (scores[i] === 0){
+//         // continue vai continuar o loop mas, ignorar o código dessa interação.
+//         continue;
+//     }
+
+//     console.log('your score: ', scores[i]);
+
+//     if (scores[i] === 100){
+//         console.log('Congratulations, you got the top score!');
+//         break;
+//     }
+// }
+
+
+
+
+// Aula 27 - switch statements
+// const grade = 'A';
+
+// if (grade === 'A'){
+//     console.log('You got an A!');
+// } else if (grade === 'B'){
+//     console.log('You got a B!');
+// } else if (grade === 'C'){
+//     console.log('You got a C!');
+// } else if (grade === 'D'){
+//     console.log('You got a D!');
+// } else if (grade === 'E'){
+//     console.log('You got an E!');
+// } else if (grade === 'F'){
+//     console.log('You got an F!');
+// }
+
+
+// switch(vari´´avel a ser observada) -> faz basicamente as mesma coisa que if, else if & else. Simplesmente, é uma estrutura mais enxuta
+
+// TEM que colocar um break, do contrário, quando encontrar um valor que bate, ele irá executar aquele valor e todos os outros que vier depois.
+// default, funciona como o else
+// switch(grade){
+//     case 'A':
+//         console.log('You got an A!');
+//         break;
+//     case 'B':
+//         console.log('You got a B!');
+//         break;
+//     case 'C':
+//         console.log('You got a C!');
+//         break;
+//     case 'D':
+//         console.log('You got a D!');
+//         break;
+//     case 'E':
+//         console.log('You got an E!');
+//         break;
+//     case 'F':
+//         console.log('You got an F!');
+//         break;
+//     default:
+//         console.log('Not a valid grade!');
+// }
+
+
+
+
+// Aula 28 - variaveis e escopo
+// cria uma variável de escopo global
+// let age = 30;
+
+// isso não será permitido, retornando um erro. Isso acontece porque a declaração e definição, está sendo feita em um escopo onde, essa variável já foi declarada e definida
+// let age = 21;
+
+// if (true) {
+    // mudou de forma gobal
+    // age = 40;
+
+    // aqui não haverá problmas, uma vez que essa variável passa a ter um escopo local, o que significa, que age só recebe o valor 21, dentro do if
+    // let age = 21;
+    // console.log('Inside 1st code block:', age);
+
+    // if (true){
+        // age irá assumir o valor de 66 apenas aqui pois, mais uma vez, estamos criando uma variável de escopo local que é único a esse if.
+        // let age = 66;
+        // console.log('Inside the 2nd code block:', age);
+    // }
+// }
+
+// console.log('Outside code block:', age);
