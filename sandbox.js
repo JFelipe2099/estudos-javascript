@@ -1,3 +1,32 @@
+// Sumário das aulas e seus assuntos
+
+// Aula 06 - console
+// Aula 07 - variáveis
+// Aula 9 - strings
+// Aula 10 - string methods
+// Aula 11 - números
+// Aula 12 - template strings
+// Aula 13 - arrays
+// Aula 14 - null e undefined
+// Aula 15 - boolean e conparação
+// Aula 16 - comparação estrita
+// Aula 17 - conversão de tipo
+// Aula 19 - for loop
+// Aula 20 - while loop
+// Aula 21 - do while loop
+// Aula 22 - if
+// Aula 23 - else & else if
+// Aula 24 - operadores lógicos (&& and; || or)
+// Aula 25 - NOT (tornar true em false e false em true !)
+// Aula 26 - Break & Continue
+// Aula 27 - switch statements
+// Aula 28 - variaveis e escopo
+// Aula 30 - função
+// Aula 31 - argumentos e parametros
+
+
+
+
 // Aula 06 - console
 
 // console.log(1);
@@ -471,3 +500,53 @@
 // }
 
 // console.log('Outside code block:', age);
+
+
+
+
+// Aula 30 - função
+// function greet(){
+//     console.log('Hello, world!');
+// }
+
+// Function Expression
+// Quando temos uma Function Expression, nós colocamos ; depois de }
+// const speak = function(){
+//     console.log('Good day!');
+// };
+
+// speak();
+// speak();
+// speak();
+
+// greet();
+// greet();
+// greet();
+
+// Isso funciona por causa do hoisting
+// kratos();
+
+// function kratos(){
+//     console.log('I am the god of war!');
+// }
+
+// Isso não funciona porqeu, function expression não recebe hoisting
+// zeus();
+
+// zeus = function(){
+//     console.log("I'm the most powerfull god!");
+// };
+
+
+
+
+// Aula 31 - argumentos e parametros
+
+// function func_name(parametro);
+// func_name(argumento);
+// function speak(name = 'visitor'){
+//     console.log(`Have a good day, ${name}!`);
+// }
+
+// speak();
+// speak('Marshall');
