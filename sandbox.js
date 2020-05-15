@@ -23,6 +23,8 @@
 // Aula 28 - variaveis e escopo
 // Aula 30 - função
 // Aula 31 - argumentos e parametros
+// Aula 32 - retonando valores
+// Aula 33 - arrow functions
 
 
 
@@ -550,3 +552,45 @@
 
 // speak();
 // speak('Marshall');
+
+
+
+
+// Aula 32 - retonando valores
+// const areaCircle = function(radius = 1){
+//     let area = Math.PI * (radius ** 2);
+//     return area.toFixed(2);
+// };
+
+// let result = areaCircle(7);
+// console.log(result);
+
+
+
+
+// Aula 33 - arrow functions
+
+// uma arrow function é apneas uma forma mais reduzida de escrever uma função. Se na arrow function só tivermos 1 parâmetro, podemos omitir os parenteses mas, se tiver mais de um ou nenhum parametro, os parenteses são obrigatórios.
+// simplificando ainda mais, podemos tirar as chaves e o return se colocarmos o que deve ser retornado na mesma linha que a arrow (=>) está
+// const areaCircle = radius => (Math.PI * (radius ** 2)).toFixed(2);
+
+// let a = areaCircle(21);
+// console.log(a);
+
+// Praticando arrow functions
+// const greet = () => 'Hello, world!';
+
+// const message = greet();
+// console.log(message);
+
+
+// const bill = (products, tax) => {
+//     let total = 0;
+//     for (let i = 0; i < products.length; i++) {
+//         total += products[i] + products[i] * tax;
+//     }
+//     return total.toFixed(2).replace('.', ',');
+// };
+
+// const pay = bill([10, 15, 30], 0.2);
+// console.log('Total a pagar: R$' + pay);
