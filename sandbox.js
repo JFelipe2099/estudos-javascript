@@ -2,13 +2,13 @@
 
 // Aula 06 - console
 // Aula 07 - variáveis
-// Aula 9 - strings
+// Aula 09 - strings
 // Aula 10 - string methods
 // Aula 11 - números
 // Aula 12 - template strings
 // Aula 13 - arrays
 // Aula 14 - null e undefined
-// Aula 15 - boolean e conparação
+// Aula 15 - boolean e comparação
 // Aula 16 - comparação estrita
 // Aula 17 - conversão de tipo
 // Aula 19 - for loop
@@ -25,7 +25,13 @@
 // Aula 31 - argumentos e parametros
 // Aula 32 - retonando valores
 // Aula 33 - arrow functions
-
+// Aula 34 - funções vs methods
+// Aula 35 - foreach method & callbacks
+// Aula 36 - fazendo uso de callback functions
+// Aula 37 - Conceito textual de Objetos
+// Aula 38 - Criando Object Literal
+// Aula 39 - adicionando methods para o Object Literal
+// Aula 40 - 'this' keyword
 
 
 
@@ -449,7 +455,7 @@
 // }
 
 
-// switch(vari´´avel a ser observada) -> faz basicamente as mesma coisa que if, else if & else. Simplesmente, é uma estrutura mais enxuta
+// switch(variável a ser observada) -> faz basicamente as mesma coisa que if, else if & else. Simplesmente, é uma estrutura mais enxuta
 
 // TEM que colocar um break, do contrário, quando encontrar um valor que bate, ele irá executar aquele valor e todos os outros que vier depois.
 // default, funciona como o else
@@ -594,3 +600,132 @@
 
 // const pay = bill([10, 15, 30], 0.2);
 // console.log('Total a pagar: R$' + pay);
+
+
+
+
+// Aula 34 - funções vs methods
+// const name = 'shaun';
+
+// funções
+// const greet = () => 'hello';
+
+// let resultOne = greet();
+// console.log(resultOne);
+
+// methods - são funções relacionadads com um objeto
+// let resultTwo = name.toUpperCase();
+// console.log(resultTwo);
+
+
+
+
+// Aula 35 - foreach method & callbacks
+// callback, é um callback function. O que siginifica, que passamos uma funrção como argumento em outra função
+
+// const myFunc = callbackFunc => {
+//     let value = 21;
+    // é uma função que ainda não existe e será passda como argumento, quando myFunc, for chamada.
+//     callbackFunc(value);
+// };
+
+// criei a função como uma função anônima no python, como uma função lambda.
+// myFunc(function(value){
+//     console.log(value);
+// });
+
+// dá pra fazer a mesma coisa do anterior com uma arrow function
+
+// myFunc(value => console.log(value * 2));
+
+// foreach
+// let people = ['mario', 'luigi', 'ryu', 'shaun', 'chun-li'];
+
+// o método forEach, tem o mesmo efeito que (for name in people), dessa vez retornando os valores ao invés do index. Mas também retorna o index se quiser, como o segundo valor.
+// people.forEach((person, index) => console.log(index, person));
+
+
+
+
+// Aula 36 - fazendo uso de callback functions
+// const ul = document.querySelector('.people');
+// let names = ['Victor', 'Allan', 'Arthur', 'Mateus'];
+// let linha = '';
+
+// names.forEach(person => {
+//     linha += `<li>${person}</li>`;
+// });
+
+// ul.innerHTML = linha;
+
+
+
+
+// Aula 37 - Conceito textual de Objetos
+
+// Objetos em JS funcionam como objetos na vida real. Ambos tem propiedades e coisas que podem fazer. Um celular por exemplo, suas propriedades são: cor, marca, tamanho. Já o que pode fazer: fazer ligações, tirar fotos, ouvir música.
+// Um objeto tem as mesmas coisas, propriedades e coisas que pode fazer, que chamamos de methods. Um objeto de usuário tem como propriedade: email, nome, idade. Já como method: login, logout, delete account.
+
+// Essa idéia é transferível para qualquer linguagem de programação, incluindo Python.
+
+
+
+
+// Aula 38 - Criando Object Literal
+// isso é um dicionário, mas acessamos ele como um objeto com dot notation
+// let user = {
+//     name: 'Felipe',
+//     age: 21,
+//     email: 'joaofelipe2099@hotmail.com',
+//     location: 'Brazil',
+//     blogs: ['old song are better than new ones', 'love the guitar']
+// };
+
+// console.log(user);
+// console.log(user.email);
+
+// podemos mudar os valores simplesmente da seguinte maneira
+
+// user.location = 'USA';
+// console.log(user);
+
+// também dá para acessar os valores como nos dicionários em python, da mesma forma, dá para trocar valores
+// console.log(user['age']);
+// user['email'] = 'joaofelipe0www01@hotmail.com';
+// console.log(user);
+
+// console.log(typeof(user));
+
+
+
+
+// Aula 39 - adicionando methods para o Object Literal
+// Aula 40 - 'this' keyword
+
+// objeto user
+// let user = {
+//     name: 'Felipe',
+//     age: 21,
+//     email: 'joaofelipe2099@hotmail.com',
+//     location: 'Brasil',
+//     books: ['A Batalha do Apocalipse', 'OZOB'],
+//     login: function(){
+//         console.log('The user loged in');
+//     },
+//     logout: function(){
+//         console.log('The user logged out');
+//     },
+//     // para criar um method, não é necessário escrever function, dessa forma já está válido
+//     logBooks(){
+//         // sem o 'this', aconteceria um erro
+//         // funciona como o self nas classes em python
+//         // 'this' possui diferentes valores dependendo de onde estiver. Aqui, ele vale o objeto 'user'. Fora desse objeto, ele valerá o objeto 'window'
+//         this.books.forEach((book, index) => console.log(`${index + 1}: ${book}`));
+//     }
+// };
+
+// user.login();
+// user.logBooks();
+// user.logout();
+
+// console.log(this);
