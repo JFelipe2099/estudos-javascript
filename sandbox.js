@@ -32,6 +32,21 @@
 // Aula 38 - Criando Object Literal
 // Aula 39 - adicionando methods para o Object Literal
 // Aula 40 - 'this' keyword
+// Aula 41 - objects nas arrays
+// Aula 42 - math object
+// Aula 43 - primitive vs reference types
+// Aula 44 - interagindo com o browser (nada)
+// Aula 45 - DOM [Document Object Model] (nada)
+// Aula 46 - query selector
+// Aula 47 - outras formas de pegar elementos com o DOM
+// Aula 48 - adicionando e alterando conteúdos da página
+// Aula 49 - recolhendo e setando atributos
+// Aula 50 - mudando estilos css
+// Aula 51 - adicionando e removendo classes
+// Aula 52 - parents, children, siblings
+// Aula 53 - eventos básicos (eventos de click)
+// Aula 54 - criando e removendo elementos
+// Aula 55 - event bubbling (and delegation)
 
 
 
@@ -121,6 +136,8 @@
 // apenas a primeira aparição
 // let result = email.replace('e', '#');
 
+// includes procura por uma substring em uma string maior
+// let result = email.includes('felipe')
 
 // console.log(result);
 
@@ -729,3 +746,371 @@
 // user.logout();
 
 // console.log(this);
+
+
+
+
+// Aula 41 - objects nas arrays
+
+// como podemos ver, podemos guardar objetos dentro de uma array. Vamos substituir a array simples dentro de reader por uma array que contem objetos
+// const books = [
+//     {title: 'Filhos do Éden', author: 'Eduardo Spohr'},
+//     {title: 'OZOB', author: 'Leonel Caldela & Deive Pazos'}
+// ];
+
+// console.log(books);
+
+// let reader = {
+//     name: 'Felipe',
+//     age: 21,
+//     email: 'joaofelipe2099@hotmail.com',
+//     location: 'Brasil',
+//     books: [
+//         {title: 'Filhos do Éden', author: 'Eduardo Spohr'},
+//         {title: 'OZOB', author: 'Leonel Caldela & Deive Pazos'}
+//     ],
+//     login(){
+//         console.log('The user logged in');
+//     },
+//     logout(){
+//         console.log('The user logged in');
+//     },
+//     logBooks(){
+//         console.log('This user has read the following books:');
+//         this.books.forEach((book, index) => console.log(`${index + 1}: ${book.title} by ${book.author}`));
+//     }
+// }
+
+// reader.logBooks();
+
+
+
+
+// Aula 42 - math object
+// Pensar como os módulos em python
+// console.log(Math.PI);
+// número de Euler
+// console.log(Math.E);
+
+// const area = 7.7;
+// console.log(Math.round(area));
+// console.log(Math.floor(area));
+// console.log(Math.ceil(area));
+// console.log(Math.trunc(area));
+
+// random numbers
+
+// const random = Math.random();
+// console.log(random);
+// console.log(Math.floor(random * 11));
+
+
+
+
+// Aula 43 - primitive vs reference types
+
+// funciona como esperávamos
+// let scoreOne = 50;
+// let scoreTwo = scoreOne;
+
+// console.log(`scoreOne: ${scoreOne}`);
+// console.log(`scoreTwo: ${scoreTwo}`);
+
+// scoreOne = 100;
+// console.log(`scoreOne: ${scoreOne}`);
+// console.log(`scoreTwo: ${scoreTwo}`);
+
+//
+
+// como podemos observar, quando mudamos a propriedade valor no playerOne, também mudamos no playerTwo. Isso acontece porque não é criado uma nova cópia, mas sim, uma referência a um objeto. Muito parecido com as listas no python que precisamos colocar listName.copy(), do contrário criamos uma ligação entre as duas e a alteração que fizermos em uma, será efetuada em todas.
+// const playerOne = {
+//     name: 'Kratus',
+//     lifePoints: 1000000
+// }
+
+// const playerTwo = playerOne;
+
+// console.log(`playerOne: ${playerOne.name}`);
+// console.log(`playerTwo: ${playerTwo.name}`);
+
+// playerOne.name = 'Atreus';
+
+// console.log(`playerOne: ${playerOne.name}`);
+// console.log(`playerTwo: ${playerTwo.name}`);
+
+
+
+
+// Aula 44 - interagindo com o browser (nada)
+
+// Aula 45 - DOM [Document Object Model] (nada)
+
+// Aula 46 - query selector
+
+// pegar elementos do DOM (página)
+// seleciona o primeiro que aparecer
+// querySelector(seletor como no css)
+// const paragraph = document.querySelector('#error');
+
+// a diferença desse para o anterior, é que este seleciona todas as ocorrencias do seletor que nós queremos. Além de retornar uma NodeList. OBS.: NodeList NÃO é uma array
+// const paragraphs = document.querySelectorAll('p');
+
+// paragraphs.forEach(paragraph => console.log(paragraph));
+
+// console.log(paragraphs[1]);
+
+
+
+
+// Aula 47 - outras formas de pegar elementos com o DOM
+
+// pelo ID
+// const title = document.getElementById('page-title');
+// console.log(title);
+// pela CLASSE
+// const errors = document.getElementsByClassName('error');
+// console.log(errors);
+// console.log(errors[0]);
+// console.log(errors[1]);
+// pela TAG
+// const paras = document.getElementsByTagName('p');
+// console.log(paras);
+// console.log(paras[0]);
+// console.log(paras[1]);
+
+
+
+
+// Aula 48 - adicionando e alterando conteúdos da página
+
+// const para = document.querySelector('p');
+// a diferença entre innerText e innerHTML, é que com o innerText, ao escrevermos tags, elas não terão funcionalidade e irá aparecer como texto
+// para.innerText = ' Goodbye cruel world!';
+
+// const paras = document.querySelectorAll('p');
+
+// paras.forEach(para => {
+//     console.log(para.innerText)
+//     para.innerText += ' ;)';
+// });
+
+// let content = document.querySelector('.content');
+
+// console.log(content.innerHTML);
+// content.innerHTML += '<h2>This is a new h2</h2>';
+
+// const people = ['Mario', 'Luigi', 'Yoshi'];
+
+// people.forEach(person => {
+//     content.innerHTML += `<p>${person}</p>`;
+// });
+
+
+
+
+// Aula 49 - recolhendo e setando atributos
+// const link = document.querySelector('a');
+
+// essa é a forma de recolher um atributo
+// console.log(link.getAttribute('href'));
+// essa é a forma de setar um atributo
+// setAttribute(atributo, vaalor para o atributo)
+// link.setAttribute('href', 'https://www.youtube.com');
+// console.log(link.getAttribute('href'));
+// link.innerText = 'YouTube';
+
+// vai retornar null, porque o primeiro 'p', não tem uma class
+// const msg = document.querySelector('p');
+// console.log(msg.getAttribute('class'));
+// msg.setAttribute('class', "Yow I'm a class");
+// msg.setAttribute('style', 'color: orange');
+
+
+
+
+// Aula 50 - mudando estilos css
+// const title = document.querySelector('h1');
+// esse comando, vai alterar as margins do h1, o problema, é que vai remover a cor dele.
+// title.setAttribute('style', 'margin: 50px');
+
+// para que isso não aconteça, nós usamos a propriedade style
+// console.log(title.style);
+// console.log(title.style.color);
+// title.style.margin = '50px';
+// title.style.color = 'crimson';
+// quando for usar atributos css que são separados com ifem, usar camocasing. Se continuar errado, bastar olhar todas as propriedades de style console.log(title.style)
+// title.style.fontSize = '60px';
+// title.style.fontFamily = 'Courier';
+
+// para remover uma propriedade, basta setar para uma string vazia
+// title.style.margin = '';
+
+
+
+
+
+// Aula 51 - adicionando e removendo classes
+// const content = document.querySelector('p');
+
+// lista de classes no objeto
+// console.log(content.classList);
+// adiciona classes ao objeto
+// content.classList.add('error');
+// content.classList.remove('error');
+// content.classList.add('success');
+
+// DESAFIO DA AULA
+// const paras = document.querySelectorAll('p');
+
+// pode ocorrer problemas com o innerText, porque ele so mostra os textos visíveis em uma página. Então se tivéssimo  <span style: "display: none;">error</span>, innerText não iria considerar e onde tinha o error, não iria receber a classe. Para resolver esse problemas, podemos usar textContent.
+// paras.forEach(para => {
+//     if (para.innerText.includes('error')) {
+//         para.classList.add('error');
+//     } else if (para.innerText.includes('success')) {
+//         para.classList.add('success');
+//     } else {
+//         console.log(para);
+//     }
+// });
+
+// além de add e remove, nós temos toggle, que caso o objeto tenha a classe em questão, ela será removida e caso não tenha, ela será adicionada.
+
+// const title = document.querySelector('h1');
+
+// adiciona, uma vez que h1 não tem a classe test
+// title.classList.toggle('test');
+// remove, já que h1 tem a classe test
+// title.classList.toggle('test');
+
+
+
+
+// Aula 52 - parents, children, siblings
+// const article = document.querySelector('article');
+// retorna coleção html de todos os elementos filhos do blco article
+// console.log(article.children);
+
+// pega a coleção html e converte para uma array
+// not in place
+// console.log(Array.from(article.children));
+
+// Array.from(article.children).forEach(child => {
+//     child.classList.add('article-element');
+// });
+
+// const title = document.querySelector('h2');
+// retorna o elemnto pai da tag
+// console.log(title.parentElement);
+// console.log(title.parentElement.parentElement);
+
+// procura pelo elemnto irmão após da tag
+// console.log(title.nextElementSibling);
+// procura pelo elemnto irmão antes da tag
+// nesse caso retora null, já que não tem um elemento irmão antes dele
+// console.log(title.previousElementSibling);
+
+// da pra fazer um encadeamento longo com as propriedades
+// console.log(title.nextElementSibling.parentElement.children);
+
+
+
+
+// Aula 53 - eventos básicos (eventos de click)
+// const button = document.querySelector('button');
+
+// monitora o elemento para o caso de determinado evento ocorra
+//.addEventListener(evento, função);
+// button.addEventListener('click', () => console.log('You clicked me'));
+
+// const items = document.querySelectorAll('li');
+
+// items.forEach(li => li.addEventListener('click', event => {
+    // como eu fiz
+    // li.style.textDecoration = 'line-through';
+    // li.style.backgroundColor = 'limegreen';
+
+    // event, é um parametro automático dado pelo browser, quando o evento do addEventListener ocorre
+    // o target, mostra o que contem no elemento em que o evento ocorreu
+    // console.log(event);
+    // console.log(event.target);
+
+    // como o instrutor sugere
+    // manual
+    // event.target.style.textDecoration = 'line-through';
+    // event.target.style.backgroundColor = 'limegreen';
+
+    // através de classes
+    // event.target.classList.toggle('done');
+// }));
+
+
+
+
+// Aula 54 - criando e removendo elementos
+// const ul = document.querySelector('ul');
+// remove o elemento da página.
+// ul.remove();
+
+// const items = document.querySelectorAll('li');
+// const button = document.querySelector('button');
+
+// IMPORTANTE!!! Os elementos adicionados posteriormente, não receberão o addEventListener, então a mudança de cores ou remoção não irá funcionar para eles. Para que isso funcione, refereir a próxima aula
+// button.addEventListener('click', () => {
+    // tem essa opção
+    // ul.innerHTML += '<li>something new</li>'
+
+    // essa é a recomendada pelo instrutor
+    // .createElement(tag a ser criada)
+    // const li = document.createElement('li');
+    // mesma coisa que innerText. Lembrando a vantagem de usar textContent, é que ele mostra todo texto, mesmo que tenha sido ocultado
+    // li.textContent = 'something new todo';
+    // adiciona ao fim
+    // ul.append(li);
+    // adiciona no inicio
+    // ul.prepend(li);
+// });
+
+// items.forEach(item => item.addEventListener('click', event => {
+    // event.target.classList.toggle('done');
+    // event.target.remove();
+// }));
+
+
+
+
+
+// Aula 55 - event bubbling (and delegation)
+// const ul = document.querySelector('ul');
+// const button = document.querySelector('button');
+// const todo = document.querySelector('[type=text]');
+
+// button.addEventListener('click', () => {
+    // const li = document.createElement('li');
+    // li.textContent = 'something new to do';
+//     li.textContent = todo.value;
+//     ul.append(li);
+//     todo.value = '';
+// });
+
+// const items = document.querySelectorAll('li');
+
+
+// event bubbling significa que quando um evento ocorre em um elemento, imediatamente depois, a página procura pelo elemento pai e verifica se tem um event listener, se tiver, ele é excutado e a página irá procurar pelo próximo elemento parente e executar a callback function do event listener, até que não existam mais eventos e parentes
+// items.forEach(li => li.addEventListener('click', event => {
+    // console.log('event in LI');
+    // esse comando para o bubbling, então depois de executar essa callback function, a página não seguirá para o event listener do ul
+    // event.stopPropagation();
+    // event.target.remove();
+// }));
+
+
+// adiciona um evento para cada li pode dar problemas de carregamnto da página entre outras coisas então, ao invés de adicionar eventos individuas, podemos fazer um DELEGATION, onde ul irá por si só ser responsável por monitorar cada elemento detro dela, ou seja, monitorar cada li e seu bloco.
+// nesse caso o bubbling entra em ação, quando clicamos em um li, acontece um bubble up e procuramos pela callback function do ul e a executamos
+// ul.addEventListener('click', event => {
+    // verifica se o nome da tag, é li, caso seja, nós a removemos se não, o bubble up ainda acontece, mas não vai ver alteração, já que nada foi especificado
+//     if (event.target.tagName === 'LI'){
+//         event.target.remove();
+//     }
+
+//     console.log(event.target);
+// });
