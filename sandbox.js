@@ -47,6 +47,12 @@
 // Aula 53 - eventos básicos (eventos de click)
 // Aula 54 - criando e removendo elementos
 // Aula 55 - event bubbling (and delegation)
+// Aula 56 - mais eventos do DOM
+// Aula 57 - criando um popup (na pasta pop-up)
+// Aula 58 - eventos dentro de formulários (nada)
+// Aula 58 - eventos dentro de formulários
+// Aula 59 - enviando eventos
+// Aula 60 - expressões regulares
 
 
 
@@ -1114,3 +1120,54 @@
 
 //     console.log(event.target);
 // });
+
+
+
+
+// Aula 56 - mais eventos do DOM
+// const copy = document.querySelector('.copy-me');
+// const box = document.querySelector('.box');
+
+// copy.addEventListener('copy', () => {
+//     console.log('Oi! I have copyright');
+// });
+
+// box.addEventListener('mousemove', event => {
+//     box.innerHTML = `${event.x}, ${event.y}`;
+// });
+
+// document.addEventListener('wheel', event => {
+//      console.log(event.x, event.y);
+// });
+
+
+
+
+// Aula 57 - criando um popup (na pasta pop-up)
+
+
+
+
+// Aula 58 - eventos dentro de formulários (nada)
+
+
+
+
+// Aula 59 - enviando eventos
+// adicionaos eventos ao form
+// const form = document.querySelector('.signup-form');
+// const unsername = document.querySelector('#username');
+
+// vai escutar pelo evento submit, que ocorrerá quando o input de type submit for clicado.
+// form.addEventListener('submit', event => {
+    // faz com que a ação padrão não seja executada
+    // event.preventDefault();
+    // console.log(unsername.value);
+    
+    // dessa forma, não precisamos criar uma referência ao input. Para que isso ocorre, basta que dentro do form que referenciamos tennha um input com um id ou name
+    // console.log(form.username.value);
+// });
+
+
+
+// Aula 60 - expressões regulares (nada, assistir curso do net nija no youtube)

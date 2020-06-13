@@ -23,3 +23,24 @@ li {
     background-color: limegreen;
     text-decoration: line-through;
 }
+
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: #eee;
+    text-align: center;
+    padding: 20px;
+}
+
+form {
+    max-width: 200px;
+    margin: 40px auto;
+    background: white;
+    padding: 10px;
+}
+
+input {
+    display: block;
+    margin: 10px auto;
+    padding: 4px;
+}
