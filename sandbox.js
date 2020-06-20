@@ -53,6 +53,10 @@
 // Aula 58 - eventos dentro de formulários
 // Aula 59 - enviando eventos
 // Aula 60 - expressões regulares
+// Aula 61 - testando padores RegEx (nada, tudo feito no curso de RegEx)
+// Aula 62 - validação de formulário simples
+// Aula 63 - eventos de teclas
+// Aulas 54-70 - quiz project
 
 
 
@@ -1171,3 +1175,55 @@
 
 
 // Aula 60 - expressões regulares (nada, assistir curso do net nija no youtube)
+// pasta regex-study, tem tudo que precisa sobre regex
+
+
+
+
+// Aula 61 - testando padores RegEx (nada, tudo feito no curso de RegEx)
+
+
+
+
+// Aula 62 - validação de formulário simples
+// const form = document.querySelector('.signup-form');
+// const feedback = document.querySelector('.feedback');
+
+// form.addEventListener('submit', event => {
+//     event.preventDefault();
+
+//     usernamePattern =  /^[a-zA-Z]{6,12}$/
+
+//     if (usernamePattern.test(form.username.value)){
+//         feedback.innerText = 'Great';
+//     } else{
+//         feedback.innerText = 'Invalid username';
+//     }
+// });
+
+
+
+
+// Aula 63 - eventos de teclas
+// const form = document.querySelector('.signup-form');
+
+// form.username.addEventListener('keyup', event => {
+//     const regex = /^([a-z\d\.]+)@([a-z]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/
+//     const email = event.target.value;
+
+//     if (regex.test(email)){
+//         form.username.style.border = 'solid 5px limegreen';
+//     } else{
+//         form.username.style.border = 'solid 5px crimson';
+//     }
+// });
+
+
+
+
+// Aulas 54-70 - quiz project
+
+
+
+
+// Aula 71 - método filter
