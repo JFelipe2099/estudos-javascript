@@ -53,10 +53,17 @@
 // Aula 58 - eventos dentro de formulários
 // Aula 59 - enviando eventos
 // Aula 60 - expressões regulares
-// Aula 61 - testando padores RegEx (nada, tudo feito no curso de RegEx)
+// Aula 61 - testando padrões RegEx (nada, tudo feito no curso de RegEx)
 // Aula 62 - validação de formulário simples
 // Aula 63 - eventos de teclas
 // Aulas 54-70 - quiz project
+// ------------------ ARRAY METHODS --------------------
+// Aula 71 - método filter
+// Aula 72 - método map
+// Aula 73 - método reduce
+// Aula 74 - método find
+// Aula 75 - método sort
+// Aula 76 - encadeando métodos
 
 
 
@@ -1227,3 +1234,178 @@
 
 
 // Aula 71 - método filter
+// const scores = [10, 30, 15, 25, 50, 40, 5];
+
+// o método filter recebe como parametro uma call bakc function que deve retornar verdadeiro ou falso. Nos casos que retornar verdadeiro, ele mantém, e os que forem falsos, ele removo. Filter é non destructive, o que significa que não altera a lista em si, mas retorna os valores que sobraram nela, por isso precisamos salvar em outra variável
+// let a = scores.filter(score => {
+//     return score % 2 !== 0;
+// });
+
+// console.log(a);
+
+// const users = [
+//     {name: 'Felipe', premium: true},
+//     {name: 'Arthur', premium: false},
+//     {name: 'Victor', premium: false},
+//     {name: 'Mateus', premium: true}
+// ];
+
+// console.log(users[1]['premium']);
+
+// const premiumUsers = users.filter(user => {
+    // ambos tem o mesmo resultado
+    // return user.premium
+    // return user['premium'] === true;
+// });
+
+// mesmo resultdado que o exemplo anterior
+// const premiumUsers = users.filter(user => user.premium);
+
+// console.log(premiumUsers);
+
+
+
+
+// Aula 72 - método map
+// const prices = [20, 10, 30, 25, 15, 40, 80,  5];
+
+// o método map recebe uma call back function e retorna todos os valores com a alteração especificada na call back function. Non destructive
+// const salePrices = prices.map(price => price / 2);
+
+// console.log(salePrices);
+
+// outro exemplo
+// const products = [
+//     {name: 'gold star', price: 20},
+//     {name: 'mushroom', price: 40},
+//     {name: 'green shells', price: 30},
+//     {name: 'banana skin', price: 10},
+//     {name: 'red shells', price: 50}
+// ];
+
+// const saleProducts = products.map(product => {
+//     if (product.price > 30){
+//         return {name: product.name, price: product.price / 2};
+//     } else{
+//         return product;
+//     }
+// })
+
+// console.log(saleProducts);
+
+
+
+
+// Aula 73 - método reduce
+// const scores = [10, 20, 60, 40, 70, 90, 30];
+
+// o método reduce recebe uma call back function e não retorna uma array, mas sim um número. Este número, será a quantidade de vezes que o que estamos observando aconteceu. No exemplo abaixo, será o total de scores acima de 50.
+// .reduce(func(contador, param2), valor inicial do contador)
+// const result = scores.reduce((contador, num) => {
+//     if (num > 50){
+//         contador++;
+//     }
+
+//     return contador;
+// }, 0);
+
+// é mesma cois do de cima e não e confuso. MINHA OPNIÃO, NÃO A DO INSTRUTOR
+// const reducedScores = scores.filter(num => num > 50).length;
+
+// console.log(result);
+
+// outro exemplo
+// const scores = [
+//     {player: 'mario', score: 50},
+//     {player: 'yoshi', score: 30},
+//     {player: 'mario', score: 70},
+//     {player: 'crystal', score: 60}
+// ];
+
+// // pra esse caso, reduce funciona melhor
+// const mario = scores.reduce((contador, curr) => {
+//     if (curr.player === 'mario'){
+//         contador += curr.score;
+//     }
+
+//     return contador;
+// }, 0);
+
+// console.log(mario);
+
+
+
+
+// Aula 74 - método find
+// const scores = [10, 5, 0, 40, 60, 10, 20, 70];
+
+// o método find recebe uma call back function que procura por um valor especificado de forma lógica, no exemplo abaixo se for maior que 50. Quando ecnontrar, se encontrar, o valor será retornado e o método para, não avaliando os outros valores da array
+// const result = scores.find(num => num > 50);
+
+// console.log(result);
+
+
+
+
+// Aula 75 - método sort
+// exemplo 1
+// const names = ['mario', 'shaun', 'lugi', 'chun-li', 'yoshi'];
+
+// // o método sort, tem um algoritimo que roda por padrão que organiza a array em ordem alfabética. Esse método é destructive. Takes in place.
+// names.sort();
+// // self explanatory
+// names.reverse();
+
+// console.log(names);
+// // exemplo 2
+// const scores = [10, 50, 20, 5, 35, 70, 45];
+// // dessa forma ele coloca os números do menor para o maior mas, existe um problema. O método só olha para o primeiro número então, se o número tiver mais de 1 dígito, o método, nessa forma, irá ignorar os outros dígitos.
+// scores.sort((a, b) => a - b);
+
+// console.log(scores);
+// // exemplo 3
+// const players = [
+//     {name: 'mario', score: 10},
+//     {name: 'luigi', score: 70},
+//     {name: 'chun-li', score: 50},
+//     {name: 'yoshi', score: 20},
+//     {name: 'shaun', score: 30}
+// ];
+
+// // como dentro de players estão guardados objetos, sort não sabe o que fazer, por iso passamos uma função de comparação.
+// // players.sort((a, b) => {
+//     // if (a.score > b.score){
+//         // para a vir antes de b
+//         // return -1;
+//     // } else if (b.score > a.score){
+//         // para b vir antes de a
+//         // return 1;
+//     // } else {
+//         // não precisa mudar de lado
+//         // return 0;
+//     // }
+// // });
+
+// // resulta na mesma coisa por causa da lógica. Se (b - a) > 0, b vem primeiro. Se (b - a) < 0, a vem primeiro. Se (b - a) = 0, não precisa mudar
+// players.sort((a, b) => b.score - a.score);
+
+// console.log(players);
+
+
+
+
+// Aula 76 - encadeando métodos
+// const products = [
+//     {name: 'gold star', price: 30},
+//     {name: 'green shell', price: 10},
+//     {name: 'red shell', price: 40},
+//     {name: 'banana skin', price: 5},
+//     {name: 'mushroom', price: 50}
+// ];
+
+// // feito dessa forma por questões de facilitar a leitura
+// const promo = products
+//     .filter(product => product.price > 20)
+//     .map(product => `The ${product.name} is US$${product.price / 2}`);
+
+// console.log(promo);
