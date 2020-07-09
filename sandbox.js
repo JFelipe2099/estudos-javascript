@@ -64,6 +64,28 @@
 // Aula 74 - método find
 // Aula 75 - método sort
 // Aula 76 - encadeando métodos
+// -----------------------------------------------------
+// Aulas 77-81 (todos project)
+// ------------------ DATA E TEMPO ---------------------
+// Aulta 82 - data e tempo
+// Aula 83 - timestamp e comparação
+// Aula 84 - construindo um relógio digital
+// Aula 85 - biblioteca Date-fns
+// ------------------ ASYNC JAVASCRIPT -----------------
+// Aula 86 e 87 - O que Javascript Assíncrono? código Async em ação
+// ------------------ HTTP REQUESTS --------------------
+// Aula 88 - o que são http requests? (/mapas-conceituais/requisicoes_http.camp)
+// Aula 89 - fazendo requisições http (XHR)
+// Aula 90 - response status
+// Aula 91 - callback functions para requesições http
+// Aula 92 - dados JSON
+// Aula 93 - callback hell
+// Aula 94 - básico sobre promises
+// Aula 95 - encadeando promises
+// Aula 96 - a função Fetch API
+// Aula 97 - Async & Await
+// Aula 98 - throwing & catching erros
+// ------------------ FIM DE ASYNC JAVASCRIPT -----------
 
 
 
@@ -1409,3 +1431,513 @@
 //     .map(product => `The ${product.name} is US$${product.price / 2}`);
 
 // console.log(promo);
+
+
+
+
+
+// Aulas 77-81 (todos project)
+
+
+
+
+// Aulta 82 - data e tempo
+// const now = new Date();
+// console.log(now);
+
+// // métodos para, ano, mês, dia, tempo
+// console.log('getFullYear: ', now.getFullYear());
+// // janeiro === 0
+// console.log('getMonth: ', now.getMonth());
+// console.log('getDate: ', now.getDate());
+// // domingo === 0
+// console.log('getDay: ', now.getDay());
+// console.log('getHours: ', now.getHours());
+// console.log('getMinutes: ', now.getMinutes());
+// console.log('getSeconds: ', now.getSeconds());
+
+// // timestamps
+// // número de milisegundos desde 01 de Janeiro de 1970 até hoje
+// console.log('timestamp: ', now.getTime());
+
+// // strings de data
+// console.log(now.toDateString());
+// console.log(now.toTimeString());
+// // data e hora
+// console.log(now.toLocaleString());
+
+
+
+
+// Aula 83 - timestamp e comparação
+// const before = new Date('January 30 1999 17:08:00');
+// const now = new Date();
+
+// // console.log(now.getTime(), before.getTime());
+
+// const diff = now.getTime() - before.getTime();
+// console.log(diff);
+
+// const mins = Math.round(diff / (60 * 1000));
+// const hours = Math.round(mins / 60);
+// const days = Math.round(hours / 24);
+// console.log(mins, hours, days);
+// if (days >= 365){
+//     console.log(Math.round(days / 365));
+// }
+
+// console.log(`The blog was writen ${days} ago`);
+
+// // convertendo um timestamp em um date object
+// const timestamp = 1675938474990;
+/// console.log(new Date(timestamp));
+
+
+
+
+// Aula 84 - construindo um relógio digital
+
+// meu código antes da aula
+// const now = new Date();
+
+// let s = now.getSeconds();
+// let m = now.getMinutes();
+// let h = now.getHours();
+
+// // console.log(`${h}:${m}:${s}`);
+// const clock = setInterval(() => {
+//     document.body.innerHTML = `${h}:${m}:${String(s++).padStart(2, '0')}`;
+
+//     if (s === 60){
+//         m++;
+//         s = 0;
+//     }
+//     if (m == 60){
+//         h++;
+//         m = 0;
+//     }
+// }, 1000);
+
+// meu código durante a aula
+// const tick = () => {
+//     const now = new Date();
+//     document.body.innerHTML = now.toTimeString().split(' ')[0];
+// };
+
+// const clock = setInterval(tick, 1000);
+
+// código do instrutor
+// const div = document.querySelector('.clock');
+
+// const tick = () => {
+//     const now = new Date();
+    
+//     const h = now.getHours();
+//     const m = now.getMinutes();
+//     const s = now.getSeconds();
+
+//     const html = `
+//         <span>${h}</span> : 
+//         <span>${m}</span> : 
+//         <span>${s}</span>
+//     `;
+
+//     div.innerHTML = html;
+// };
+
+// const clock = setInterval(tick, 1000);
+
+
+
+
+// Aula 85 - biblioteca Date-fns
+// const now = new Date();
+
+// // console.log(dateFns.isToday(now));
+
+// // opções de formatação das datas
+// console.log(dateFns.format(now, 'YYYY'));
+// console.log(dateFns.format(now, 'MMM'));
+// console.log(dateFns.format(now, 'dddd'));
+// console.log(dateFns.format(now, 'Do'));
+// console.log(dateFns.format(now, 'dddd Do, MMMM YYYY'));
+
+// // comparando datas
+// const before = new Date('January 30 2020 08:36:00');
+// // o terceiro parâmetro, é opcional. É um ojeto.
+// console.log(dateFns.distanceInWords(now, before, {addSuffix: true}));
+
+
+
+
+// Aula 86 e 87 - O que Javascript assíncrono? código Async em ação
+
+// // primeiro devemos entender que o Javascript é uma linguagem de programação sincrona, o que significa que ela executa seus comando em linha reta, um após o outro, sem pular e depois voltar nele.
+// // Ex.: será executado um de cada vez. log -> 1 2 3 4
+// // console.log(1);
+// // console.log(2);
+// // console.log(3);
+// // console.log(4);
+
+// // mas isso pode trazer alguns problemas como, demora no carregamento de uma página. Imagine que um dos comandos precisa acessar um banco de dados e carregar informações, isso pode demorar alguns segundo e dessa forma, o Javascript terá que esperar até que esse comando seja termianado, até que o próximo comando possa ser executado. Aí é que entra o Javascript assíncrono, com ele nós podemos executar esses comando e quando encontre um comando que demorará um tempo até que ele termie, o Javascript vai deixar ele rodando no background, enquanto executa os outros que pode ser executados rápidamente, e quando o que precisava esperar estiver pronto, será executado através de um callback.
+// // Ex.: log -> 1 2 3 4 [(callback function fires) : depois de 3 segundos]
+// console.log(1);
+// console.log(2);
+// setTimeout(() => {
+//     console.log('callback function fired')
+// }, 3000);
+// console.log(3);
+// console.log(4);
+
+// // no exemplo acima, nós podemos ver que setTimeout tem um comportamento assíncrono, deixando que os outros sejam executados, mesmo que ele venha antes deles e mesmo que ele tenha que esperar um tempo.
+
+
+
+
+// Aula 88 - o que são http requests? (/mapas-conceituais/requisicoes_http.camp)
+
+
+
+
+// Aula 89 - fazendo requisições http (XHR)
+// const request = new XMLHttpRequest();
+
+// // esse evento vai ser disparado toda vez que ouver uma mudança no estado do nosso request. Mudança de estado === diferentes fases do request (4 fases no total)
+// request.addEventListener('readystatechange', () => {
+//     // readyState === estado em que o request está
+//     // console.log(request, request.readyState);
+
+//     // nesse estado podemos manipular os dados, antes dele, não.
+//     if (request.readyState === 4){
+//         // responseText  retorna json no formato string
+//         console.log(request.responseText);
+//     }
+// });
+
+// // esse aqui só arma o request que nós queremos fazer. O primeiro param é o tipo de método que queremos usar e o segundo é onde nós queremos usar esse método.
+// // iremos usar o método GET no site, procurando todos os todos
+// request.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
+// // com o método send, é que fazemos o request
+// request.send();
+
+// // estados do request: 
+// //     0 (UNSET) - objeto criado MSAssertion, o open() não foi chamado;
+// //     1 (OPENED) - opne() foi chamado;
+// //     2 (HEARDERS_RECEIVED) - send() foi chamado, e os headers e status estão disponíveis;
+// //     3 (LOADING) -  downloading, responseText tem dados parciais;
+// //     4 (DONE) - a operação foi concluída;
+
+
+
+
+// Aula 90 - response status
+// const request = new XMLHttpRequest();
+
+// // além do readyState, precisamos checar o status, para termos certeza de que estamos encontrando o json que procuramos.
+
+// // códigos possiveis:
+//     // Informational responses (100–199),
+//     // Successful responses (200–299),
+//     // Redirects (300–399),
+//     // Client errors (400–499),
+//     // and Server errors (500–599).
+
+// // para melhores informações, consultar (https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
+// request.addEventListener('readystatechange', () => {
+//     if (request.readyState === 4 && request.status === 200){
+//         console.log(request, request.responseText);
+//     } else if (request.readyState === 4){
+//         document.body.innerHTML = '<h1>Could not fetch data. Check end point</h1>';
+//     }
+// });
+
+// request.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
+// request.send();
+
+
+
+
+// Aula 91 - callback functions para requesições http
+
+// para que o código seja mais reutilizável, nós o guradamos em uma função, como argumento nós damos uma callback function que tem dois argumento (erro, dados). Quando o erro não existe (readyState === 4 && status === 200), nós temos callback(undefined, dados), no outro caso nós temos callback(mensagem de erro, undefined). Nós passamos undefined, para o argumento que não temos uso em cada situação
+// const getTodos = (callback) => {
+//     const request = new XMLHttpRequest();
+
+//     request.addEventListener('readystatechange', () => {
+//         if (request.readyState === 4 && request.status === 200){
+//             callback(undefined, request.responseText);
+//         } else if (request.readyState === 4){
+//             callback('could not fetch data', undefined);
+//         }
+//     });
+    
+//     request.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
+//     request.send();
+// };
+
+// // tem um comportamento assíncrono
+// getTodos((error, data) => {
+//     console.log('callback fired');
+//     if (error){
+//         // vai rodar o código de erro, else if
+//         console.log(error);
+//     } else{
+//         // código de sucesso if
+//         console.log(data);
+//     }
+// });
+
+
+
+
+// Aula 92 - dados JSON
+//JSON, nóe temos que usar aspas duplas em tudo que for texto. Números e booleans não levam aspas
+
+// const getTodos = (callback) => {
+//     const request = new XMLHttpRequest();
+
+//     request.addEventListener('readystatechange', () => {
+//         if (request.readyState === 4 && request.status === 200){
+//             // converte JSON string para um objeto javascript. JSON ==== (JavaScript Object Notation)
+//             const data = JSON.parse(request.responseText);
+//             callback(undefined, data);
+//         } else if (request.readyState === 4){
+//             callback('could not fecth data', undefined);
+//         }
+//     });
+
+//     // só funciona com live server
+//     // request.open('GET', 'json-cripts/todos.json');
+//     request.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
+//     request.send();
+// };
+
+// getTodos((err, data) => {
+//     if (err){
+//         console.log(err);
+//     } else{
+//         console.log(data);
+//     }
+// });
+
+
+
+
+// Aula 93 - callback hell
+// const getTodos = (resources, callback) => {
+//     const request = new XMLHttpRequest();
+
+//     request.addEventListener('readystatechange', () => {
+//         if (request.readyState === 4 && request.status === 200){
+//             const data = JSON.parse(request.responseText);
+//             callback(undefined, data);
+//         } else if (request.readyState === 4){
+//             callback('could not fetch data', undefined);
+//         }
+//     });
+
+//     request.open('GET', resources);
+//     request.send();
+// };
+
+// // esse é o tipo de callback hell. Quando nós temos a chamada de uma funcção dentro de uma callback function, que por sua vez tem uma nova chamada de uma função e assim por diante.
+// // quebra a assincronidade, porque um tem que esperar pelo outro, ao invés de carregar os mais rápidos e deixar os mais lentos para depois.
+// // além de não ser prático semânticamente, ele pode nos dar alguns probblemas. Para resolvermos isso usaremos as PROMISES (ver na próxima aula)
+// getTodos('json-scripts/felipe.json', (err, data) => {
+//     console.log(data);
+//     getTodos('json-scripts/celyne.json', (err, date) => {
+//         console.log(data);
+//         getTodos('json-scripts/gustavo.json', (err, data) => {
+//             console.log(data);
+//         })
+//     })
+// });
+
+
+
+
+// Aula 94 - básico sobre promises
+// const getTodos = (resource) => {
+//     return new Promise((resolve, reject) => {
+//         const request = new XMLHttpRequest();
+
+//     request.addEventListener('readystatechange', () => {
+//         if (request.readyState === 4 && request.status === 200){
+//             const data = JSON.parse(request.responseText);
+//             resolve(data);
+//         } else if (request.readyState === 4){
+//             reject('error getting resource');
+//         }
+//     });
+
+//     request.open('GET', resource);
+//     request.send();
+//     });
+// };
+
+// getTodos('json-scripts/felipe.json')
+// .then(data => console.log('promise resolved: ', data))
+// .catch(err => console.log('promise rejected: ', err));
+
+// exmplo de promise
+
+// promise === algo que levará um tempo para ser feito.
+// uma promise pode ter dois resultados:
+//  1. RESOLVED, nós conseguimos os dados que procurávamos;
+//  2. REJECTED, erro ocorre e rejeitamos o ponto.
+// primeira coisa que vasemos é return new Promise();
+// const getSomething = () => {
+
+
+//     return new Promise((resolve, reject) => {
+//         // pega algo em uma network
+//         resolve('some data');
+//         // reject('some error');
+//     });
+// };
+
+// um jeito de fazer uma chama de promise
+// getSomething().then((data) => {
+//     console.log(data);
+// }, (err) => {
+//     console.log(err);
+// });
+
+// outro jeito de fazer uma chamada de promise
+// getSomething().then(data => {
+//     console.log(data);
+// }).catch(err => {
+//     console.log(err);
+// });
+
+
+
+
+// Aula 95 - encadeando promises
+// const getTodos = (resource) => {
+//     return new Promise((resolve, reject) => {
+//         const request = new XMLHttpRequest();
+
+//         request.addEventListener('readystatechange', () => {
+//             if (request.readyState === 4 && request.status === 200){
+//                 const data = JSON.parse(request.responseText);
+//                 resolve(data);
+//             } else if (request.readyState === 4){
+//                 reject('error getting resource');
+//             }
+//         });
+
+//         request.open('GET', resource);
+//         request.send();
+//     });
+// };
+
+// // nós pdemos usar apenas um catch, já que toda vez que retornamos o getTodos(), nós estamos retornando uma nova promise. só será pego o erro, na promise que ele ocorre, as outras serão executadas normalmente.
+// // dessa foma, nós continuamos com o js assíncrono e carregado cada um de uma vez.
+// getTodos('json-scripts/felipe.json')
+// .then(data => {
+//     console.log('promise 1 resolved:', data);
+//     return getTodos('json-scripts/gustavo.json');
+// })
+// .then(data => {
+//     console.log('promise 2 resolved:', data);
+//     return getTodos('json-scripts/celyne.json');
+// })
+// .then(data => {
+//     console.log('promise 3 resolved:', data);
+// })
+// .catch(err => {
+//     console.log('promise rejected:', err);
+// });
+
+
+
+
+// Aula 96 - a função Fetch API
+
+// a função fetch, vai fazer todo o processo de requesiçao http de forma direta e nos retorna uma promise
+// fetch só retorna o REJECT se ouver um network error, do contrário retornará RESOLVE, mesmo que exista um erro com a URL. Mas, mesmo retornando RESOLVE, ocorrerá um erro e o status === 404.
+// fetch('json-scripts/felipe.json')
+// .then(response => {
+//     // essa é uma das formas de levantar um erro caso exista uma falha na requisição http.
+//     // if (response.status === 200){
+//     //     console.log('resolved:', response);
+//     //     // dessa forma nós retornamos o json que procurávamos e no próximo .then(), trabalhamos com ele
+//     //     return response.json();
+//     // } else {
+//     //     throw new Error('Something went wrong');
+//     // }
+
+//     // outra forma de levantar um erro.
+//     // .ok é fornecido pela função fetch
+//     if (!response.ok){
+//         throw Error('Something went wrong!');
+//     }
+
+//     console.log('resolved:', response);
+//     return response.json();
+// })
+// .then(data => {
+//     console.log(data);
+// })
+// .catch(err => {
+//     console.log(err);
+// });
+
+
+
+
+// Aula 97 - Async & Await
+
+// para criarmos uma função assíncrona, basta adicionarmos a palavra chave ASYNC. Uma função assíncrona sempre retorna uma PROMISE.
+// não bloquea o código
+// const getTodos = async () => {
+//     // AWAIT faz o javascript esperar de forma assíncrona a atribuição de valor da variável response, fazendo com que uma callback logo que FETCH tenha tido o seu RESOLVE ou REJECTED executados.
+//     // adicionamos await onde retornar uma PROMISE, assim podemos processar essa parte do código em outro lugar (de forma assíncrona), e não bloquear o código.
+
+//     // AWAIT substitui .then(). Como ele tem esse comportamento, existe o processo de execução do código um atrás do outro (de forma síncrona), mas como a função é assíncrona, não existe um block para o restante do código. Essa é uma forma mais efetiva de encadear PROMISES do que usado .then e .catch, ou do que criando uma callback hell.
+//     const response = await fetch('json-scripts/felipe.json');
+//     const data = await response.json();
+//     return data;
+// };
+
+// // getTodos() retorna uma promise, então aqui nós usamos .then e .catch para podermos lidar com os dados dentro da função e com o resoled e reject
+// // NON-BLOCKING
+// getTodos()
+//     .then(data => console.log('resolved:', data));
+
+// // fetch('json-scripts/felipe.json')
+// // .then(response => {
+// //     if (!response.ok){
+// //         throw new Error('Something went wrong!');
+// //     }
+
+// //     console.log('resolved:', response);
+// //     return response.json();
+// // })
+// // .then(data => {
+// //     data.forEach((element, index) => {
+// //         console.log(`${index}. ${element.title} by ${element.author}`);
+// //     });
+// // })
+// // .catch(err => console.log(err));
+
+
+
+
+// Aula 98 - throwing & catching erros
+const getTodos = async () => {
+    const response = await fetch('json-scripts/felipe.json');
+
+    if (!response.ok){
+        throw new Error('Cannot fetch the data!');
+    }
+
+    const data = await response.json();
+    return data;
+};
+
+getTodos()
+    .then(data => console.log('resolved:', data))
+    .catch(err => console.log('rejected:', err.message));
