@@ -86,7 +86,13 @@
 // Aula 97 - Async & Await
 // Aula 98 - throwing & catching erros
 // ------------------ FIM DE ASYNC JAVASCRIPT -----------
-
+// Aulas 99-108 Weather App
+// Aula 109 - operador ternário
+// ------------------ LOCAL STORAGE ---------------------
+// Aula 110 - local storage
+// Aula 111 - armazenando e pegando dados
+// Aula 112 - apagando dados armazenados
+// Aula 113 - stringifying & parsing data
 
 
 // Aula 06 - console
@@ -1927,17 +1933,91 @@
 
 
 // Aula 98 - throwing & catching erros
-const getTodos = async () => {
-    const response = await fetch('json-scripts/felipe.json');
+// const getTodos = async () => {
+//     const response = await fetch('json-scripts/felipe.json');
 
-    if (!response.ok){
-        throw new Error('Cannot fetch the data!');
-    }
+//     if (!response.ok){
+//         throw new Error('Cannot fetch the data!');
+//     }
 
-    const data = await response.json();
-    return data;
-};
+//     const data = await response.json();
+//     return data;
+// };
 
-getTodos()
-    .then(data => console.log('resolved:', data))
-    .catch(err => console.log('rejected:', err.message));
+// getTodos()
+//     .then(data => console.log('resolved:', data))
+//     .catch(err => console.log('rejected:', err.message));
+
+
+
+
+// Aula 109 - operador ternário
+// const variável = condição ? resultado se true : resultado se false;
+// const result = (1 + 2 === 2) ? 'It is 2!' : 'Well math just got wrong';
+// console.log(result);
+
+
+
+// Aula 110 - local storage
+// local storage é o armazenamento local, na máquina (browser) do usuário de informações
+
+
+
+
+
+// Aula 111 - armazenando e pegando dados
+
+// armazenar
+// localStorage.setItem(key, value);
+// localStorage.setItem('name', 'Felipe');
+// mesmo que tenha sido passado um integer, ele será convertido para uma string, uma vez que localStorage só aceita strings
+// localStorage.setItem('age', 21);
+
+// pegar
+// let name = localStorage.getItem('name');
+// let age = localStorage.getItem('age');
+
+// console.log(name, age);
+
+// atualizar
+// podemos fazer tanto da mesma forma como criamos novos dados ou com dot notation
+// localStorage.setItem('name', 'Celyne');
+// localStorage.age = '16';
+
+// mesmo que todo o código anterior tenha sido comentado, essas três linhas não causaram um erro. Se tivermos dados armazenados localmente, irá procurar pela key, se não tivermos ou não encontrarmos, retorna null
+// name = localStorage.getItem('name');
+// age = localStorage.getItem('age');
+
+// console.log(name, age);
+
+
+
+
+// Aula 112 - apagando dados armazenados
+// console.log(localStorage);
+
+// remove um por vez
+// localStorage.removeItem('age');
+
+// remove tudo do armazenamento local
+// localStorage.clear();
+// console.log(localStorage);
+
+
+
+
+// Aula 113 - stringifying & parsing data
+// const todos = [
+//     {text: 'play mariokart', author: 'shaun'},
+//     {text: 'buy some milk', author: 'mario'},
+//     {text: 'buy some bread', author: 'luigi'}
+// ];
+
+// converte array para uma string no formato json
+// const j = JSON.stringify(todos);
+// localStorage.setItem('todos', j);
+
+
+// const stored = localStorage.getItem('todos');
+// converte array para uma array
+// console.log(JSON.parse(stored));
