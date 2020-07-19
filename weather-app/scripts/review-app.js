@@ -43,6 +43,7 @@ form.addEventListener('submit', event => {
 
     const cityName = form.city.value;
     form.reset();
+    localStorage.setItem('city', cityName);
     
     // getCity(cityName)
     //     .then(data  => getConditions(data.Key))
@@ -53,3 +54,9 @@ form.addEventListener('submit', event => {
         .then(data => changeUI(data))
         .catch(err => console.log(err));
 });
+
+if (localStorage.getItem('city')){
+    updateCity(localStorage.getItem('city'))
+        .then(data => changeUI(data))
+        .catch(err => console.log(err));
+}
