@@ -93,6 +93,17 @@
 // Aula 111 - armazenando e pegando dados
 // Aula 112 - apagando dados armazenados
 // Aula 113 - stringifying & parsing data
+// ------------------ OBJECT ORIENTED PROGRAMMING --------
+// Aula 117 - classes
+// Aula 118 - class constructors
+// Aula 119 - class methods & method chaining
+// Aula 120 - herança de classes (subclasse)
+// Aula 121 - Super()
+// -------- COMO CLASSS FUNCIONA (under the hood) --------
+// Aula 122 - construtores (como funcionam de verdade)
+// Aula 123 - prototype model
+// Aula 124 - herança de prototype
+// ----------- FIM OBJECT ORIENTED PROGRAMMING -----------
 
 
 // Aula 06 - console
@@ -2021,3 +2032,278 @@
 // const stored = localStorage.getItem('todos');
 // converte array para uma array
 // console.log(JSON.parse(stored));
+
+// const form = document.querySelector('.signup-form');
+
+// const result = [
+//     {jogador: 'Felipe', ponto: 1},
+//     {jogador: 'André', ponto: 4},
+//     {jogador: 'Pereira', ponto: 8},
+//     {jogador: 'Gustavo', ponto: 6}
+// ];
+
+// form.addEventListener('submit', event => {
+//     event.preventDefault();
+
+//     localStorage.setItem(form.username.value, JSON.stringify(result));
+// });
+
+
+
+
+
+
+// Aula 117 - classes
+// uma classe é como uma blueprint. Ela possui todos os detalhes e funcionalidades que um grupo de elementos pode possuir.
+// na classe user criada abaixo, USERNAME e EMAIL, são as propriedades que um usuário tem, já LOGIN e LOGOUT, são funcionalidades (methods) que os usuários tem.
+
+
+
+
+
+// Aula 118 - class constructors
+// class User{
+//     constructor(username, email){
+//         this.username = username;
+//         this.email = email;
+//     }
+// }
+
+// const felipe = new User('jfelipe2099', 'joaofelipe2099@hotmail.com');
+// // new User(...) retorna um objeto (dicionário) com as propriedades da classe User e com a possibilidade de usar os métodos da classe User
+// console.log(felipe);
+
+// console.log(felipe.username, felipe.email);
+
+
+
+
+// Aula 119 - class methods & method chaining
+// class User{
+//     constructor(username, email){
+//         this.username = username;
+//         this.email = email;
+//         this.score = 0;
+//     }
+
+//     login(){
+//         console.log(`${this.username} just logged in.`);
+//         return this;
+//     }
+
+//     logout(){
+//         console.log(`${this.username} just logged out.`);
+//         return this;
+//     }
+
+//     mood(userMood){
+//         console.log(`I feel ${userMood}.`);
+//         return this;
+//     }
+
+//     incScore(){
+//         this.score++;
+//         console.log(`${this.username} has a score of ${this.score}.`);
+
+//         return this;
+//     }
+// }
+
+// const felipe = new User('Felipe', 'joaofelipe2099@hotmail.com');
+
+// felipe.login();
+// felipe.mood('happy');
+// felipe.logout();
+
+// // essa linha só funciona se login retornar o próprio objeto, ao invés de retornar undefined. Quando não especificamos algo para ser retornado, JS retorna altomaticamente undefined.
+// // para retornarmos o próprio objeto usamos (return this;)
+// // felipe.login().logout();
+
+// // o (return this;), irá retornar o objeto já com o score atualizado.
+// felipe.incScore().incScore().incScore().incScore();
+
+// não é recessário retornar this. Podemos retornar qualquer outra coisa ou simplesmente não retornar nada. o (return this;) só é necessário se quisermos que o método possa se encadear com outro método.
+
+
+
+
+// Aula 120 - herança de classes (subclasse)
+// class User{
+//     constructor(username, email){
+//         this.username = username;
+//         this.email = email;
+//         this.score = 0;
+//     }
+
+//     login(){
+//         console.log(`${this.username} just logged in.`);
+//         return this;
+//     }
+
+//     logout(){
+//         console.log(`${this.username} just logged out.`);
+//     }
+
+//     incScore(){
+//         this.score++;
+//         console.log(`${this.username} has a score of ${this.score}`);
+//         return this;
+//     }
+
+//     mood(feel){
+//         console.log(`I fell ${feel}.`);
+//         return this;
+//     }
+// }
+
+// // extends é usado para herdar parâmetros e métodos e de uma outra classe
+// class Admin extends User{
+//     deleteUser(user){
+//         users = users.filter(u => u.username !== user.username);
+//     }
+// }
+
+
+// const felipe = new User('Felipe', 'joaofelipe2099@hotmail.com');
+// const gustavo = new Admin('Gustavo', 'gustavo@hotmail.com')
+
+// // // console.log(gustavo);
+// // // felipe.login().mood('good').incScore().logout();
+
+// let users = [felipe, gustavo];
+// console.log(users);
+
+// gustavo.deleteUser(felipe);
+// console.log(users);
+
+
+
+
+// Aula 121 - Super()
+// class User{
+//     constructor(username, email){
+//         this.username = username;
+//         this.email = email;
+//         this.score = 0;
+//     }
+
+//     login(){
+//         console.log(`${this.username} just logged in.`);
+//         return this;
+//     }
+
+//     logout(){
+//         console.log(`${this.username} just logged out.`);
+//     }
+
+//     incScore(){
+//         this.score++;
+//         console.log(`${this.username} has a score of ${this.score}`);
+//         return this;
+//     }
+// }
+
+// // como a classe Admin tem um constructor, ela não irá mais ler o constructor de User, sendo assim, não terá mais o parâmetros de username e email, por isso, precisamos pedir novamente nesse constructor os parâmetros.
+// // super() trata esses parâmetros da mesma forma que eles são tratados na classe parente.
+// class Admin extends User{
+//     constructor(username, email, title){
+//         super(username, email);
+//         this.title = title;
+//     }
+
+//     deleteUser(user){
+//         users = users.filter(u => u.username !== user.username);
+
+//         return this;
+//     }
+// }
+
+// const felipe = new User('Felipe', 'felipe@domain.com');
+// const gustavo = new Admin('Gustavo', 'gustavo@domain.com', 'adm');
+// const celyne = new User('Celyne', 'celyne@domain.com');
+
+// console.log(gustavo);
+// // users = [felipe, gustavo, celyne];
+
+// // gustavo.login().incScore().deleteUser(felipe).logout();
+// // console.log(users);
+
+
+
+
+// Aula 122 - construtores (como funcionam de verdade)
+
+// função construtora
+// function User(username, email){
+//     this.username = username;
+//     this.email = email;
+
+//     this.login = function(){
+//         console.log(`${this.username} has logged in.`)
+//     }
+// }
+
+// const felipe = new User('Felipe', 'felipe@domain.com');
+// console.log(felipe);
+// felipe.login();
+
+
+
+
+// Aula 123 - prototype model
+// function User(username, email){
+//     this.username = username;
+//     this.email = email;
+// }
+
+// User.prototype.login = function(){
+//     console.log(`${this.username} has just logged in.`);
+//     return this;
+// }
+
+// User.prototype.logout = function(){
+//     console.log(`${this.username} has just logged out.`);
+// }
+
+// const felipe = new User('Felipe', 'felipe@domain.com');
+// console.log(felipe);
+// felipe.login();
+
+
+
+
+// Aula 124 - herança com prototype
+// function User(username, email){
+//     this.username = username;
+//     this.email = email;
+// }
+
+// User.prototype.login = function(){
+//     console.log(`${this.username} has just logged in.`);
+//     return this;
+// }
+
+// User.prototype.logout = function(){
+//     console.log(`${this.username} has just logged out.`);
+// }
+
+// function Admin(username, email, title){
+//     // faz o mesmo que super
+//     User.call(this, username, email);
+//     this.title = title;
+// }
+
+// // cria uma cópia do prototype de User para Admin
+// Admin.prototype = Object.create(User.prototype);
+
+// Admin.prototype.deleteUser = function(user){
+//     users = users.filter(u => u.username !== user.username);
+//     return this;
+// }
+
+// const felipe = new User('Felipe', 'joaofelipe2099@hotmail.com');
+// const gustavo = new Admin('Gustavo', 'gustavo@domain.com', 'adm');
+
+// users = [felipe, gustavo];
+
+// gustavo.login().deleteUser(felipe).logout();

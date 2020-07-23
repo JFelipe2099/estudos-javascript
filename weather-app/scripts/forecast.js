@@ -1,29 +1,33 @@
-const key = 'MAhp0ipbutyESak28D9QoEjSPShuQRyX';
-
-const citySearch = async (cityName='gravatá') => {
-    const cityResource = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${key}&q=${cityName}&language=pt-br`;
-
-    const loc = await fetch(cityResource);
-    if (!loc.ok){
-        throw new Error('Somethin went wrong!');
+class Forecast{
+    constructor(){
+        this.key = 'MAhp0ipbutyESak28D9QoEjSPShuQRyX';
+        this.lang = 'en-us';
+        this.cityURI = 'http://dataservice.accuweather.com/locations/v1/cities/search';
+        this.weatherURI = 'http://dataservice.accuweather.com/currentconditions/v1/';
     }
-    const city = await loc.json();
-    return city;
-};
 
-const cityConditions = async (cityKey) => {
-    const conditionResource = `http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${key}&language=pt-br`;
-    const cond = await fetch(conditionResource);
-    return cond.json();
+    async getCity(city){
+        const query = `?apikey=${this.key}&q=${city}&language=${this.lang}`;
+
+        const response = await fetch(this.cityURI + query);
+        const data = await response.json();
+
+        return data[0];
+    }
+
+    async getConditions(cityKey){
+        const query = `${cityKey}?apikey=${this.key}&language=${this.lang}`;
+
+        const response = await fetch(this.weatherURI + query);
+        const data = await response.json();
+
+        return data[0];
+    }
+
+    async updateCity(city){
+        const cityDets = await this.getCity(city);
+        const weather = await this.getConditions(cityDets.Key);
+
+        return {cityDets, weather};
+    }
 }
-
-// citySearch()
-//     .then(city => cityConditions(city[0].Key))
-//     .then(city => console.log(city))
-//     .catch(err => console.log(err));
-
-// export {citySearch, cityConditions};
-// module.exports = {
-//     citySearch: citySearch,
-//     cityConditions: cityConditions
-// }
