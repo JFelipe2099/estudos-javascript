@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Aprendendo Firebase</title>
+</head>
+<body>
+    <div class="container my-5">
+        <h2>Recipes</h2>
+        <ul>
+        </ul>
+
+        <form>
+            <label for="recipe">Add a new recipe:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="recipe" required>
+                <div class="input-group-append">
+                    <input type="submit" value="add" class="btn btn-outline-secondary">
+                </div>
+            </div>
+        </form>
+        <button>unsubscribe from changes</button>
+    </div>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <!-- importa o banco de dados -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyB8AuvODl3MLlOF0B77TuMKOedgtTsrNWw",
+        authDomain: "curso-javascript-e5070.firebaseapp.com",
+        databaseURL: "https://curso-javascript-e5070.firebaseio.com",
+        projectId: "curso-javascript-e5070",
+        storageBucket: "curso-javascript-e5070.appspot.com",
+        messagingSenderId: "960885449558",
+        appId: "1:960885449558:web:51ff50f19964436eb6ecf7",
+        measurementId: "G-END1XL1BZ5"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    // inicializa o banco de dados
+    const db = firebase.firestore();
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
